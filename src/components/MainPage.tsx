@@ -1,34 +1,29 @@
 import { useState } from 'react'
 import Projects from './Projects'
 import './MainPage.css'
+import ModelViewer from './ModelViewer'
+
 
 function App() {
   const [showCV, setShowCV] = useState(false)
 
   return (
     <div className="app-container">
+                <section className="model-section">
+        <ModelViewer />
+      </section>
       <header className="hero">
-        <nav className="navbar">
-          <h3 className="logo">AlinaEricson<span className="dot">.</span></h3>
-          <ul className="nav-links">
-            <li><a href="#about">// about</a></li>
-            <li><a href="#experience">// experience</a></li>
-            <li><a href="#work">// work</a></li>
-            <li><a href="#contact">// contact</a></li>
-          </ul>
-        </nav>
-
         <div className="hero-content">
           <h1 className="hero-title">ALINA ERICSON</h1>
           <p className="hero-subtitle">Frontend Developer | Intern @ Centiro | Based in Sweden</p>
-          <button className="view-cv" onClick={() => setShowCV(!showCV)}>
+          {/* <button className="view-cv" onClick={() => setShowCV(!showCV)}>
             {showCV ? 'Hide CV' : 'View CV'}
-          </button>
+          </button> */}
         </div>
-        <div className="scroll-indicator"></div>
+        {/* <div className="scroll-indicator"></div> */}
+
       </header>
-
-
+{/* 
       {showCV && (
         <section className="cv-section">
           <iframe
@@ -39,7 +34,9 @@ function App() {
             style={{ border: 'none' }}
           />
         </section>
-      )}
+      )} */}
+
+    
 
       <section className="section about">
         <h2>About Me</h2>
