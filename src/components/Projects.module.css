@@ -1,6 +1,6 @@
 :root {
-  --accent-color: #00fff7;
-  --accent-hover: #ff4ecd;
+  --accent-color: #8b5cf6;
+  --accent-hover: #a855f7;
   --radius: 12px;
   --transition: 0.3s ease;
   --text-color: #e0e0e0;
@@ -11,44 +11,80 @@
 }
 
 .heading {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin-bottom: 2rem;
   color: var(--accent-color);
   text-align: center;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
+/* NEW MASONRY GRID LAYOUT */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 200px;
   gap: 2rem;
+}
+
+/* Different card sizes */
+.card:nth-child(1) {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.card:nth-child(2) {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.card:nth-child(3) {
+  grid-column: span 1;
+  grid-row: span 3;
+}
+
+.card:nth-child(4) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.card:nth-child(5) {
+  grid-column: span 1;
+  grid-row: span 2;
 }
 
 .card {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.08);
   border-radius: var(--radius);
   padding: 1.5rem;
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.08);
   transition: var(--transition);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15), 0 0 60px rgba(255, 78, 205, 0.1);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
+  border-color: rgba(139, 92, 246, 0.2);
 }
 
 .imageWrapper {
   overflow: hidden;
   border-radius: 10px;
   margin-bottom: 1rem;
+  flex: 1;
+  min-height: 100px;
 }
 
 .thumb {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
   border-radius: 10px;
   transition: transform 0.3s ease;
@@ -58,15 +94,20 @@
   transform: scale(1.05);
 }
 
+.info {
+  margin-top: auto;
+}
+
 .info h3 {
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin: 0.5rem 0;
 }
 
 .info p {
   color: #aaa;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
 }
 
 .icons {
@@ -74,6 +115,16 @@
   gap: 0.6rem;
   margin-top: 0.8rem;
   color: var(--accent-color);
+}
+
+.icons span {
+  font-size: 1.1rem;
+  transition: all var(--transition);
+}
+
+.icons span:hover {
+  color: var(--accent-hover);
+  transform: scale(1.1);
 }
 
 .backdrop {
@@ -85,17 +136,20 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 2rem;
 }
 
 .modal {
-  background: rgba(25, 25, 35, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(25, 25, 35, 0.9);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: var(--radius);
   padding: 2rem;
   max-width: 720px;
   width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
   color: var(--text-color);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15), 0 0 60px rgba(255, 78, 205, 0.1);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
 }
 
 .modal h3 {
@@ -105,11 +159,58 @@
   text-transform: uppercase;
 }
 
+.modal p {
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
 .swiper {
   margin: 1.5rem 0;
   border-radius: 10px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
+}
+
+/* Custom Swiper styles for purple theme */
+.swiper :global(.swiper-button-next),
+.swiper :global(.swiper-button-prev) {
+  color: white !important;
+  background: rgba(139, 92, 246, 0.8) !important;
+  border-radius: 50%;
+  width: 50px !important;
+  height: 50px !important;
+  margin-top: -25px !important;
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+  transition: all 0.3s ease;
+}
+
+.swiper :global(.swiper-button-next:hover),
+.swiper :global(.swiper-button-prev:hover) {
+  background: var(--accent-color) !important;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+.swiper :global(.swiper-button-next::after),
+.swiper :global(.swiper-button-prev::after) {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+.swiper :global(.swiper-pagination-bullet) {
+  background: rgba(139, 92, 246, 0.5) !important;
+  width: 12px !important;
+  height: 12px !important;
+  opacity: 1 !important;
+}
+
+.swiper :global(.swiper-pagination-bullet-active) {
+  background: var(--accent-color) !important;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
 }
 
 .screenshot {
@@ -128,20 +229,23 @@
 
 .links a {
   background: rgba(255, 255, 255, 0.05);
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: var(--radius);
   color: var(--accent-color);
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: all var(--transition);
+  border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 .links a:hover {
   background: var(--accent-color);
   color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
 }
 
 .closeBtn {
@@ -149,14 +253,67 @@
   background: var(--accent-color);
   color: #000;
   border: none;
-  padding: 0.6rem 1.4rem;
+  padding: 0.8rem 2rem;
   border-radius: var(--radius);
   cursor: pointer;
   font-weight: 600;
+  font-size: 1rem;
   transition: var(--transition);
+  width: 100%;
 }
 
 .closeBtn:hover {
   background: var(--accent-hover);
   color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .card:nth-child(1) {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  
+  .card:nth-child(4) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 250px;
+  }
+  
+  .card:nth-child(1),
+  .card:nth-child(2),
+  .card:nth-child(3),
+  .card:nth-child(4),
+  .card:nth-child(5) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .modal {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .modal h3 {
+    font-size: 1.5rem;
+  }
+  
+  .links {
+    flex-direction: column;
+  }
+  
+  .links a {
+    justify-content: center;
+  }
 }

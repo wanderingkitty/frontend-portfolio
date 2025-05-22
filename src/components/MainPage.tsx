@@ -1,46 +1,57 @@
-import { useState } from 'react'
+
+import { useRef } from 'react'
 import Projects from './Projects'
 import './MainPage.css'
-import ModelViewer from './ModelViewer'
-
 
 function App() {
-  const [showCV, setShowCV] = useState(false)
+  const aboutRef = useRef(null)
+  const experienceRef = useRef(null)
+  const workRef = useRef(null)
+  const contactRef = useRef(null)
+  const mainRef = useRef(null)
+
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
 
   return (
     <div className="app-container">
-                <section className="model-section">
-        <ModelViewer />
-      </section>
-      <header className="hero">
-        <div className="hero-content">
-          <h1 className="hero-title">ALINA ERICSON</h1>
-          <p className="hero-subtitle">Frontend Developer | Intern @ Centiro | Based in Sweden</p>
-          {/* <button className="view-cv" onClick={() => setShowCV(!showCV)}>
-            {showCV ? 'Hide CV' : 'View CV'}
-          </button> */}
+      {/* Fixed Navigation Header */}
+      <nav className="fixed-nav">
+        <div className="fixed-nav-content">
+          <button className="nav-logo" onClick={() => scrollToSection(mainRef)} >AlinaEricson</button>
+          <div className="fixed-nav-links">
+            <button className="fixed-nav-btn" onClick={() => scrollToSection(aboutRef)}>
+              <span className="nav-number">01</span> // about
+            </button>
+            <button className="fixed-nav-btn" onClick={() => scrollToSection(experienceRef)}>
+              <span className="nav-number">02</span> // experience
+            </button>
+            <button className="fixed-nav-btn" onClick={() => scrollToSection(workRef)}>
+              <span className="nav-number">03</span> // work
+            </button>
+            <button className="fixed-nav-btn" onClick={() => scrollToSection(contactRef)}>
+              <span className="nav-number">04</span> // contact
+            </button>
+          </div>
         </div>
-        {/* <div className="scroll-indicator"></div> */}
+      </nav>
 
-      </header>
-{/* 
-      {showCV && (
-        <section className="cv-section">
-          <iframe
-            src="/alina.pdf"
-            title="Alina's CV"
-            width="100%"
-            height="100%"
-            style={{ border: 'none' }}
-          />
-        </section>
-      )} */}
+      {/* Hero секция с анимированным фоном */}
+      <section ref={mainRef} className="hero-section" id='main'>
+        <div className="animated-bg"></div>
+        <div className="hero-content">
+          <h1 className="main-title">ALINA <br />ERICSON</h1>
+          <p className="main-subtitle">Frontend Developer | Centiro Solutions AB | Based in Sweden</p>
 
+        </div>
+      </section>
     
-
-      <section className="section about">
+      <section ref={aboutRef} className="section about" id="about">
         <h2>About Me</h2>
-        <p>I’m a frontend development student with hands-on experience from Centiro Solutions. I enjoy building responsive, user-friendly websites with React, TypeScript, and Angular.</p>
+        <p>I'm a frontend development student with hands-on experience from Centiro Solutions. I enjoy building responsive, user-friendly websites with React, TypeScript, and Angular.</p>
         <div className="skills">
           {['HTML', 'CSS', 'SCSS', 'JavaScript', 'TypeScript', 'React.js', 'Angular', 'Figma', 'UX design', 'CI/CD', 'Git', 'Azure DevOps', 'Agile methods', 'Deployment process', 'Back End-webbutveckling', 'C#'].map(skill => (
             <span key={skill}>{skill}</span>
@@ -48,18 +59,18 @@ function App() {
         </div>
       </section>
 
-      <section className="section experience">
+      <section ref={experienceRef} className="section experience" id="experience">
         <h2>Experience</h2>
         <p><strong>Intern – Centiro Solutions AB</strong><br />Nov 2024 – Present<br />
           Contributed to Angular/TypeScript codebase, improved UI, and worked in Agile team with Azure DevOps.
         </p>
       </section>
 
-      <section className="section work">
+      <section ref={workRef} className="section work" id="work">
         <Projects />
       </section>
 
-      <section className="section contact">
+      <section ref={contactRef} className="section contact" id="contact">
         <h2>Contact</h2>
         <p>Email: <a href="mailto:alinaericson95@gmail.com">alinaericson95@gmail.com</a></p>
         <p><a href="https://www.linkedin.com/in/alina-ericson-50549b273/">LinkedIn</a> | <a href="#">GitHub</a></p>
