@@ -1,11 +1,3 @@
-:root {
-  --accent-color: #8b5cf6;
-  --accent-hover: #a855f7;
-  --radius: 12px;
-  --transition: 0.3s ease;
-  --text-color: #e0e0e0;
-}
-
 .section {
   padding: 4rem 2rem;
 }
@@ -23,11 +15,9 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 200px;
   gap: 2rem;
 }
 
-/* Different card sizes */
 .card:nth-child(1) {
   grid-column: span 1;
   grid-row: span 2;
@@ -40,7 +30,7 @@
 
 .card:nth-child(3) {
   grid-column: span 1;
-  grid-row: span 2;
+  grid-row: span 1;
 }
 
 .card:nth-child(4) {
@@ -161,52 +151,6 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
-}
-
-.swiper {
-  margin: 1.5rem 0;
-  border-radius: 10px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-/* Custom Swiper styles for purple theme */
-.swiper :global(.swiper-button-next),
-.swiper :global(.swiper-button-prev) {
-  color: white !important;
-  background: rgba(139, 92, 246, 0.8) !important;
-  border-radius: 50%;
-  width: 50px !important;
-  height: 50px !important;
-  margin-top: -25px !important;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-  transition: all 0.3s ease;
-}
-
-.swiper :global(.swiper-button-next:hover),
-.swiper :global(.swiper-button-prev:hover) {
-  background: var(--accent-color) !important;
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
-}
-
-.swiper :global(.swiper-button-next::after),
-.swiper :global(.swiper-button-prev::after) {
-  font-size: 18px !important;
-  font-weight: bold;
-}
-
-.swiper :global(.swiper-pagination-bullet) {
-  background: rgba(139, 92, 246, 0.5) !important;
-  width: 12px !important;
-  height: 12px !important;
-  opacity: 1 !important;
-}
-
-.swiper :global(.swiper-pagination-bullet-active) {
-  background: var(--accent-color) !important;
-  box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
 }
 
 .screenshot {

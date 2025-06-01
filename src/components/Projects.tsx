@@ -20,10 +20,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import styles from "./Projects.module.css";
 
-// Импорт стилей Swiper
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+// Убираем проблемные импорты CSS - стили уже есть в Projects.module.css
+
+const getImageUrl = (imageName: string) =>
+  `${import.meta.env.BASE_URL}${imageName}`;
 
 type Project = {
   title: string;
@@ -39,12 +39,12 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Training Adventure",
-    image: "/frontend-portfolio/create-character.jpg",
+    image: getImageUrl("create-character.jpg"),
     screenshots: [
-      "/frontend-portfolio/hero.jpg",
-      "/frontend-portfolio/classes.jpg",
-      "/frontend-portfolio/create-character.jpg",
-      "/frontend-portfolio/profile.jpg",
+      getImageUrl("hero.jpg"),
+      getImageUrl("classes.jpg"),
+      getImageUrl("create-character.jpg"),
+      getImageUrl("profile.jpg"),
     ],
     description:
       "A gamified fitness web app where users create a character, complete workouts, earn XP and level up. Built with Angular, MongoDB and Node.js.",
@@ -60,11 +60,11 @@ const projects: Project[] = [
   },
   {
     title: "Chappy-chat",
-    image: "/frontend-portfolio/chappy.png",
+    image: getImageUrl("chappy.png"),
     screenshots: [
-      "/frontend-portfolio/chat1.png",
-      "/frontend-portfolio/chat2.png",
-      "/frontend-portfolio/chat3.png",
+      getImageUrl("chat1.png"),
+      getImageUrl("chat2.png"),
+      getImageUrl("chat3.png"),
     ],
     description:
       "This is a Chat API build with MERN stack (MongoDB, Express, React, Node.js) and includes authentication with JWT(JSON Web Tokens) and validation using Joi. Chappy-chat is application where users can send and receive messages in channels or directly to other users(DMs). The API provides endpoints for user authentication, managing channels, and sending messages in both open and locked channels. The application allows for guest access to open channels and secured communication for logged-in users.",
@@ -80,8 +80,8 @@ const projects: Project[] = [
   },
   {
     title: "Pokedexity",
-    image: "/frontend-portfolio/pokeball.jpg",
-    screenshots: ["/frontend-portfolio/pokemon.png"],
+    image: getImageUrl("pokeball.jpg"),
+    screenshots: [getImageUrl("pokemon.png")],
     description:
       "Interactive web application designed as part of a school assignment. It utilizes the latest web technologies to create an engaging and intuitive user experience for Pokémon enthusiasts. The application offers features such as viewing Pokémon details, managing a personal team of Pokémon, and saving a list of reserved Pokémon for future reference.",
     tech: "JavaScript, HTML, CSS",
@@ -95,8 +95,8 @@ const projects: Project[] = [
   },
   {
     title: "GoGhibli",
-    image: "/frontend-portfolio/totoro.jpg",
-    screenshots: ["/frontend-portfolio/totoro.jpg"],
+    image: getImageUrl("totoro.jpg"),
+    screenshots: [getImageUrl("totoro.jpg")],
     description:
       "GoGhibli is a school project built with React, TypeScript, and Vite that lets users search Studio Ghibli movies through a public API.",
     tech: "React, TypeScript, Vite",
@@ -111,8 +111,8 @@ const projects: Project[] = [
   },
   {
     title: "HangBot",
-    image: "/frontend-portfolio/main.png",
-    screenshots: ["/frontend-portfolio/playBot.png"],
+    image: getImageUrl("main.png"),
+    screenshots: [getImageUrl("playBot.png")],
     description:
       "It happened to be our first JavaScript school assignment. As a group of three aspiring students who just started our journey on a big uncharted land of JavaScript.",
     tech: "JavaScript, HTML, CSS",
