@@ -1,6 +1,6 @@
 :root {
-  --accent-color: #8b5cf6;
-  --accent-hover: #a855f7;
+  --accent-color: #b794f6;
+  --accent-hover: #d6bcfa;
   --radius: 12px;
   --transition: 0.3s ease;
   --dark-bg: #0e0e10;
@@ -13,6 +13,34 @@ body {
   font-family: "IBM Plex Mono", monospace;
   color: #e0e0e0;
   overflow-x: hidden;
+}
+
+p {
+  font-size: 1.3em;
+}
+
+hr {
+  border: none;
+  height: 0.5px;
+  width: 80%;
+  margin: 3rem auto;
+  position: relative;
+}
+
+hr.with-dot {
+  background: rgba(224, 224, 224, 0.15);
+}
+
+hr.with-dot::after {
+  content: "•";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2f2f2f;
+  color: var(--accent-color);
+  font-size: 1.2rem;
+  padding: 0 0.5rem;
 }
 
 .app-container {
@@ -44,16 +72,16 @@ body {
 .nav-logo {
   position: absolute;
   left: -50%;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: white;
-    cursor: pointer;
-    background: none;
-    border: none;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .nav-logo::after {
-  content: '.';
+  content: ".";
   color: var(--accent-color);
 }
 
@@ -68,7 +96,7 @@ body {
   color: #aaa;
   padding: 0.5rem 1rem;
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   font-weight: 500;
   border-radius: var(--radius);
   cursor: pointer;
@@ -79,7 +107,7 @@ body {
 .fixed-nav-btn .nav-number {
   color: var(--accent-color);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .fixed-nav-btn:hover {
@@ -95,36 +123,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #2f2f2f;
-}
-
-/* Простой анимированный фон */
-.animated-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #2f2f2f;
-  z-index: 0;
-}
-
-.animated-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
-  animation: float 8s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(20px, -20px); }
+  background-color: #201f1f;
 }
 
 /* Hero Content */
@@ -205,14 +204,14 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 
 .skills span {
   background: rgba(255, 255, 255, 0.05);
   padding: 0.4rem 0.9rem;
   border-radius: var(--radius);
-  font-size: 0.85rem;
+  font-size: 1.5rem;
   color: #ddd;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all var(--transition);
@@ -272,7 +271,8 @@ footer {
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15),
+    0 0 60px rgba(168, 85, 247, 0.1);
 }
 
 .imageWrapper {
@@ -330,7 +330,8 @@ footer {
   max-width: 720px;
   width: 100%;
   color: var(--text-color);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15),
+    0 0 60px rgba(168, 85, 247, 0.1);
 }
 
 .modal h3 {
@@ -402,11 +403,11 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .nav-btn {
     width: 200px;
   }
-  
+
   .section {
     padding: 3rem 1rem;
   }

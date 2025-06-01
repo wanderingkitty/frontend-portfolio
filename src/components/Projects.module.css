@@ -40,7 +40,7 @@
 
 .card:nth-child(3) {
   grid-column: span 1;
-  grid-row: span 3;
+  grid-row: span 2;
 }
 
 .card:nth-child(4) {
@@ -55,11 +55,9 @@
 
 .card {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(139, 92, 246, 0.08);
   border-radius: var(--radius);
   padding: 1.5rem;
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.08);
   transition: var(--transition);
   cursor: pointer;
   display: flex;
@@ -70,8 +68,6 @@
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
-  border-color: rgba(139, 92, 246, 0.2);
 }
 
 .imageWrapper {
@@ -149,7 +145,8 @@
   max-height: 90vh;
   overflow-y: auto;
   color: var(--text-color);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(168, 85, 247, 0.1);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15),
+    0 0 60px rgba(168, 85, 247, 0.1);
 }
 
 .modal h3 {
@@ -209,7 +206,6 @@
 
 .swiper :global(.swiper-pagination-bullet-active) {
   background: var(--accent-color) !important;
-  transform: scale(1.2);
   box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
 }
 
@@ -273,12 +269,12 @@
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .card:nth-child(1) {
     grid-column: span 1;
     grid-row: span 2;
   }
-  
+
   .card:nth-child(4) {
     grid-column: span 2;
     grid-row: span 1;
@@ -290,7 +286,7 @@
     grid-template-columns: 1fr;
     grid-auto-rows: 250px;
   }
-  
+
   .card:nth-child(1),
   .card:nth-child(2),
   .card:nth-child(3),
@@ -299,20 +295,20 @@
     grid-column: span 1;
     grid-row: span 1;
   }
-  
+
   .modal {
     margin: 1rem;
     padding: 1.5rem;
   }
-  
+
   .modal h3 {
     font-size: 1.5rem;
   }
-  
+
   .links {
     flex-direction: column;
   }
-  
+
   .links a {
     justify-content: center;
   }
