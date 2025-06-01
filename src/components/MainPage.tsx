@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import Projects from "./Projects";
 import "./MainPage.css";
-// import ModelViewer from "./ModelViewer";
 
 function App() {
   const aboutRef = useRef(null);
@@ -57,7 +56,6 @@ function App() {
       {/* Hero секция с анимированным фоном */}
       <section ref={mainRef} className="hero-section" id="main">
         <div className="animated-bg"></div>
-        {/* <ModelViewer /> */}
         <div className="hero-content">
           <h1 className="main-title">
             ALINA <br />
