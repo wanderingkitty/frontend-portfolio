@@ -20,6 +20,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import styles from "./Projects.module.css";
 
+// Импорт стилей Swiper
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 type Project = {
   title: string;
   description: string;
@@ -34,27 +39,36 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Training Adventure",
-    image: "/create-character.jpg",
+    image: "/frontend-portfolio/create-character.jpg",
     screenshots: [
-      "/hero.jpg",
-      "/classes.jpg",
-      "/create-character.jpg",
-      "/profile.jpg",
+      "/frontend-portfolio/hero.jpg",
+      "/frontend-portfolio/classes.jpg",
+      "/frontend-portfolio/create-character.jpg",
+      "/frontend-portfolio/profile.jpg",
     ],
     description:
       "A gamified fitness web app where users create a character, complete workouts, earn XP and level up. Built with Angular, MongoDB and Node.js.",
     tech: "Angular, TypeScript, Node.js, MongoDB, Express",
     github: "https://github.com/wanderingkitty/traningsaventyr2.0",
     demo: "https://traningsaventyr2-0.onrender.com/",
-    icons: [<SiAngular />, <SiTypescript />, <FaNodeJs />, <SiMongodb />],
+    icons: [
+      <SiAngular key="angular" />,
+      <SiTypescript key="ts" />,
+      <FaNodeJs key="node" />,
+      <SiMongodb key="mongo" />,
+    ],
   },
   {
     title: "Chappy-chat",
-    image: "/chappy.png",
-    screenshots: ["/chat1.png", "/chat2.png", "/chat3.png"],
+    image: "/frontend-portfolio/chappy.png",
+    screenshots: [
+      "/frontend-portfolio/chat1.png",
+      "/frontend-portfolio/chat2.png",
+      "/frontend-portfolio/chat3.png",
+    ],
     description:
-      "This is a Chat API build with MERN stack (MongoDB, Express, React, Node.js) and icludes authentication with JWT(JSON Web Tokens) and validation using Joi. Chappy-chat is application where users can send and recieve messages in channels or directly to other users(DMs). The API provides endpoints for user authentication, managing channels, and sending messages in both open and locked channels. The application allows for guest access to open channels and secured communication for logged-in users.",
-    tech: "JavaScript, HTML, CSS",
+      "This is a Chat API build with MERN stack (MongoDB, Express, React, Node.js) and includes authentication with JWT(JSON Web Tokens) and validation using Joi. Chappy-chat is application where users can send and receive messages in channels or directly to other users(DMs). The API provides endpoints for user authentication, managing channels, and sending messages in both open and locked channels. The application allows for guest access to open channels and secured communication for logged-in users.",
+    tech: "React, Node.js, Express, MongoDB",
     github: "https://github.com/wanderingkitty/Chappy-chat",
     demo: "https://chappy-chat.onrender.com/",
     icons: [
@@ -66,8 +80,8 @@ const projects: Project[] = [
   },
   {
     title: "Pokedexity",
-    image: "/pokeball.jpg",
-    screenshots: ["/pokemon.png"],
+    image: "/frontend-portfolio/pokeball.jpg",
+    screenshots: ["/frontend-portfolio/pokemon.png"],
     description:
       "Interactive web application designed as part of a school assignment. It utilizes the latest web technologies to create an engaging and intuitive user experience for Pokémon enthusiasts. The application offers features such as viewing Pokémon details, managing a personal team of Pokémon, and saving a list of reserved Pokémon for future reference.",
     tech: "JavaScript, HTML, CSS",
@@ -81,11 +95,11 @@ const projects: Project[] = [
   },
   {
     title: "GoGhibli",
-    image: "/totoro.jpg",
-    screenshots: [],
+    image: "/frontend-portfolio/totoro.jpg",
+    screenshots: ["/frontend-portfolio/totoro.jpg"],
     description:
       "GoGhibli is a school project built with React, TypeScript, and Vite that lets users search Studio Ghibli movies through a public API.",
-    tech: "JavaScript, HTML, CSS",
+    tech: "React, TypeScript, Vite",
     github: "https://github.com/wanderingkitty/GoGhibli",
     icons: [
       <FaReact key="react" />,
@@ -97,10 +111,10 @@ const projects: Project[] = [
   },
   {
     title: "HangBot",
-    image: "/main.png",
-    screenshots: ["/playBot.png"],
+    image: "/frontend-portfolio/main.png",
+    screenshots: ["/frontend-portfolio/playBot.png"],
     description:
-      "It happaned to be our firts Java-Script school assignment. As a group of a three aspiring students who just started our journey on a big uncharted land of Java-Script.",
+      "It happened to be our first JavaScript school assignment. As a group of three aspiring students who just started our journey on a big uncharted land of JavaScript.",
     tech: "JavaScript, HTML, CSS",
     github: "https://github.com/wanderingkitty/BionicCriminals",
     demo: "https://wanderingkitty.github.io/BionicCriminals/",
@@ -167,24 +181,34 @@ export default function Projects() {
             >
               <h3>{activeProject.title}</h3>
               <p>{activeProject.description}</p>
-              <Swiper
-                modules={[Navigation, Pagination]}
-                navigation
-                pagination={{ clickable: true }}
-                spaceBetween={20}
-                slidesPerView={1}
-                className={styles.swiper}
-              >
-                {activeProject.screenshots.map((src, index) => (
-                  <SwiperSlide key={index}>
-                    <img
-                      src={src}
-                      alt={`Screenshot ${index + 1}`}
-                      className={styles.screenshot}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+
+              {/* Показываем Swiper только если есть скриншоты */}
+              {activeProject.screenshots &&
+                activeProject.screenshots.length > 0 && (
+                  <Swiper
+                    modules={[Navigation, Pagination]}
+                    navigation
+                    pagination={{ clickable: true }}
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    className={styles.swiper}
+                  >
+                    {activeProject.screenshots.map((src, index) => (
+                      <SwiperSlide key={index}>
+                        <img
+                          src={src}
+                          alt={`${activeProject.title} screenshot ${index + 1}`}
+                          className={styles.screenshot}
+                          onError={(e) => {
+                            console.log(`Failed to load image: ${src}`);
+                            e.currentTarget.style.display = "none";
+                          }}
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                )}
+
               <div className={styles.links}>
                 {activeProject.github && (
                   <a
