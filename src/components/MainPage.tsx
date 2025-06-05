@@ -130,7 +130,7 @@ function App() {
           <a href="https://www.linkedin.com/in/alina-ericson-50549b273/">
             LinkedIn
           </a>{" "}
-          | <a href="#">GitHub</a>
+          | <a href="https://github.com/wanderingkitty">GitHub</a>
         </p>
       </section>
 
